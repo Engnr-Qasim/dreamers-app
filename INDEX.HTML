@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dreamers App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="theme-dark1">
+
+  <!-- EmailJS SDK (Added) -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+  <script type="text/javascript">
+  (function(){
+    emailjs.init("BozrltyjV88HKVF6N");
+  })();
+</script>
+
+
+  <!-- APP HEADER -->
+  <header class="app-header">
+    <img src="IMAGES/dreamerslogo.jpg" alt="Dreamers Logo">
+    <h1>Dreamers</h1>
+    <div class="theme-switcher">
+      <button onclick="switchTheme('theme-dark1')">Dark 1</button>
+      <button onclick="switchTheme('theme-dark2')">Dark 2</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- LOGIN / SIGNUP SCREEN -->
+    <section id="login" class="screen active">
+      <h2>Welcome to Dreamers Society 🌍</h2>
+      <p>Please enter your details to start.</p>
+      <form id="loginForm">
+        <label>Name (Required)</label>
+        <input type="text" id="userName" placeholder="Your name" required>
+
+        <label>Email (Optional)</label>
+        <input type="email" id="userEmail" placeholder="Your email">
+
+        <label>Phone (Optional)</label>
+        <input type="text" id="userPhone" placeholder="Your phone number">
+
+        <label>Location (Required)</label>
+        <input type="text" id="userLocation" placeholder="Enter your location" required>
+        <button type="button" onclick="detectUserLocation()">📍 Detect Location</button>
+
+        <button type="submit">Start</button>
+      </form>
+    </section>
+
+    <!-- HOME SCREEN -->
+    <section id="home" class="screen">
+      <h2>Welcome, <span id="userDisplayName"></span> 🌱</h2>
+      <p>Dreaming a cleaner, greener tomorrow.</p>
+
+      <div class="user-dashboard">
+        <div class="dash-card">
+          <h3 id="joinedCount">0</h3>
+          <p>Campaigns Joined</p>
+        </div>
+        <div class="dash-card">
+          <h3 id="reportCount">0</h3>
+          <p>Reports Submitted</p>
+        </div>
+      </div>
+
+      <h3>Our Campaign Progress</h3>
+      <div class="progress-cards">
+        <div class="card">
+          🌳 Tree Plantation
+          <div class="progress-bar"><div style="width: 0%"></div></div>
+          <p>0% completed</p>
+        </div>
+        <div class="card">
+          🧹 Cleanliness Drives
+          <div class="progress-bar"><div style="width: 0%"></div></div>
+          <p>0% completed</p>
+        </div>
+        <div class="card">
+          🗑️ Dustbin Installation
+          <div class="progress-bar"><div style="width: 0%"></div></div>
+          <p>0% completed</p>
+        </div>
+        <div class="card">
+          🎤 Awareness Sessions
+          <div class="progress-bar"><div style="width: 0%"></div></div>
+          <p>0% completed</p>
+        </div>
+      </div>
+
+      <h3>Meet Our Team</h3>
+      <div class="team-cards">
+        <div class="card">
+          <img src="assets/logo.png" alt="Team Member">
+          <p>Qasim Usman</p>
+          <p>Founder</p>
+        </div>
+        <div class="card">
+          <img src="assets/logo.png" alt="Team Member">
+          <p>Member 2</p>
+          <p>Coordinator</p>
+        </div>
+        <div class="card">
+          <img src="assets/logo.png" alt="Team Member">
+          <p>Member 3</p>
+          <p>Volunteer</p>
+        </div>
+      </div>
+<h3 class="gold-title">Our Key Activities & Impact</h3>
+
+<div class="activities-list">
+
+  <!-- Dustbin Installation -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>🗑️ Dustbin Installation Drive</h4>
+    <p>
+      Trash bins were installed at key public locations to promote proper waste disposal.
+      This initiative helped reduce littering, encouraged responsible behavior,
+      and supported a cleaner and healthier environment for the community.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <img src="assets/logo.png" alt="Dustbin 1">
+        <img src="assets/logo.png" alt="Dustbin 2">
+        <img src="assets/logo.png" alt="Dustbin 3">
+        <img src="assets/logo.png" alt="Dustbin 4">
+        <img src="assets/logo.png" alt="Dustbin 5">
+        <img src="assets/logo.png" alt="Dustbin 6">
+        <img src="assets/logo.png" alt="Dustbin 7">
+        <img src="assets/logo.png" alt="Dustbin 8">
+        <img src="assets/logo.png" alt="Dustbin 9">
+        <img src="assets/logo.png" alt="Dustbin 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plantation Campaign -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>🌱 Plantation Campaign</h4>
+    <p>
+      Tree plantation activities were conducted to increase greenery,
+      improve air quality, and raise awareness about environmental sustainability.
+      Participants actively contributed to building a greener future.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <!-- 10 images placeholders -->
+        <img src="assets/logo.png" alt="Plantation 1">
+        <img src="assets/logo.png" alt="Plantation 2">
+        <img src="assets/logo.png" alt="Plantation 3">
+        <img src="assets/logo.png" alt="Plantation 4">
+        <img src="assets/logo.png" alt="Plantation 5">
+        <img src="assets/logo.png" alt="Plantation 6">
+        <img src="assets/logo.png" alt="Plantation 7">
+        <img src="assets/logo.png" alt="Plantation 8">
+        <img src="assets/logo.png" alt="Plantation 9">
+        <img src="assets/logo.png" alt="Plantation 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Industrial & Facility Visits -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>🏭 Industrial & Facility Visits</h4>
+    <p>
+      Visits to industrial areas and facilitation centers were arranged
+      to observe environmental practices, waste management systems,
+      and real-world sustainability challenges.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <!-- 10 images placeholders -->
+        <img src="assets/logo.png" alt="Visit 1">
+        <img src="assets/logo.png" alt="Visit 2">
+        <img src="assets/logo.png" alt="Visit 3">
+        <img src="assets/logo.png" alt="Visit 4">
+        <img src="assets/logo.png" alt="Visit 5">
+        <img src="assets/logo.png" alt="Visit 6">
+        <img src="assets/logo.png" alt="Visit 7">
+        <img src="assets/logo.png" alt="Visit 8">
+        <img src="assets/logo.png" alt="Visit 9">
+        <img src="assets/logo.png" alt="Visit 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Awareness Through Posters -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>📢 Awareness Through Posters & Media</h4>
+    <p>
+      Awareness campaigns were conducted using posters and visual material
+      to educate people about cleanliness, pollution control,
+      and environmental responsibility.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <!-- 10 images placeholders -->
+        <img src="assets/logo.png" alt="Awareness 1">
+        <img src="assets/logo.png" alt="Awareness 2">
+        <img src="assets/logo.png" alt="Awareness 3">
+        <img src="assets/logo.png" alt="Awareness 4">
+        <img src="assets/logo.png" alt="Awareness 5">
+        <img src="assets/logo.png" alt="Awareness 6">
+        <img src="assets/logo.png" alt="Awareness 7">
+        <img src="assets/logo.png" alt="Awareness 8">
+        <img src="assets/logo.png" alt="Awareness 9">
+        <img src="assets/logo.png" alt="Awareness 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- School Awareness Programs -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>🏫 School Awareness Programs</h4>
+    <p>
+      Awareness sessions were held in schools to educate students about cleanliness,
+      hygiene, and environmental protection, creating responsible habits from an early age.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <!-- 10 images placeholders -->
+        <img src="assets/logo.png" alt="School 1">
+        <img src="assets/logo.png" alt="School 2">
+        <img src="assets/logo.png" alt="School 3">
+        <img src="assets/logo.png" alt="School 4">
+        <img src="assets/logo.png" alt="School 5">
+        <img src="assets/logo.png" alt="School 6">
+        <img src="assets/logo.png" alt="School 7">
+        <img src="assets/logo.png" alt="School 8">
+        <img src="assets/logo.png" alt="School 9">
+        <img src="assets/logo.png" alt="School 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Creative Activities -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>🎨 Creative Activities for Children</h4>
+    <p>
+      Interactive and creative activities were organized for young students,
+      helping them learn environmental values through fun,
+      engagement, and practical participation.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <!-- 10 images placeholders -->
+        <img src="assets/logo.png" alt="Creative 1">
+        <img src="assets/logo.png" alt="Creative 2">
+        <img src="assets/logo.png" alt="Creative 3">
+        <img src="assets/logo.png" alt="Creative 4">
+        <img src="assets/logo.png" alt="Creative 5">
+        <img src="assets/logo.png" alt="Creative 6">
+        <img src="assets/logo.png" alt="Creative 7">
+        <img src="assets/logo.png" alt="Creative 8">
+        <img src="assets/logo.png" alt="Creative 9">
+        <img src="assets/logo.png" alt="Creative 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cleanliness & Street Awareness -->
+  <div class="activity-card" onclick="toggleMedia(this)">
+    <h4>🧹 Cleanliness & Street Awareness</h4>
+    <p>
+      Cleanliness drives and street-level awareness activities were conducted
+      to promote public hygiene, proper waste disposal,
+      and a sense of social responsibility among citizens.
+    </p>
+    <div class="activity-media">
+      <div class="images">
+        <!-- 10 images placeholders -->
+        <img src="assets/logo.png" alt="Cleanliness 1">
+        <img src="assets/logo.png" alt="Cleanliness 2">
+        <img src="assets/logo.png" alt="Cleanliness 3">
+        <img src="assets/logo.png" alt="Cleanliness 4">
+        <img src="assets/logo.png" alt="Cleanliness 5">
+        <img src="assets/logo.png" alt="Cleanliness 6">
+        <img src="assets/logo.png" alt="Cleanliness 7">
+        <img src="assets/logo.png" alt="Cleanliness 8">
+        <img src="assets/logo.png" alt="Cleanliness 9">
+        <img src="assets/logo.png" alt="Cleanliness 10">
+      </div>
+      <div class="videos">
+        <video src="assets/sample1.mp4" controls></video>
+        <video src="assets/sample2.mp4" controls></video>
+        <video src="assets/sample3.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+    </section>
+
+     <!-- CAMPAIGNS -->
+    <section id="campaigns" class="screen">
+      <h2>Campaigns</h2>
+      <div class="cards">
+        <div class="card">
+          🌳 Tree Plantation<br>
+          Date: 15 Dec 2025<br>
+          Location: Peshawar<br>
+          <button onclick="joinCampaign('Tree Plantation')">Join Now</button>
+        </div>
+        <div class="card">
+          🧹 Cleanliness Drives<br>
+          Date: 20 Dec 2025<br>
+          Location: Peshawar<br>
+          <button onclick="joinCampaign('Cleanliness Drives')">Join Now</button>
+        </div>
+        <div class="card">
+          🗑️ Dustbin Installation<br>
+          Date: 25 Dec 2025<br>
+          Location: Peshawar<br>
+          <button onclick="joinCampaign('Dustbin Installation')">Join Now</button>
+        </div>
+        <div class="card">
+          🎤 Awareness Sessions<br>
+          Date: 30 Dec 2025<br>
+          Location: Peshawar<br>
+          <button onclick="joinCampaign('Awareness Sessions')">Join Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REPORT -->
+    <section id="report" class="screen">
+      <h2>Report an Issue</h2>
+      <form id="reportForm">
+        <label>Email</label>
+        <input type="email" id="reportEmail" placeholder="Enter your email" required>
+
+        <label>Issue Type</label>
+        <select id="issueType" required>
+          <option value="">Select issue type</option>
+          <option value="Tree Plantation">Tree Plantation</option>
+          <option value="Garbage/Waste Dumping">Garbage/Waste Dumping</option>
+          <option value="Water Pollution">Water Pollution</option>
+          <option value="Air Pollution">Air Pollution</option>
+          <option value="Illegal Construction">Illegal Construction</option>
+          <option value="Dustbin Installation">Dustbin Installation</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" id="location" placeholder="Enter address or location" required>
+        <button type="button" onclick="getLocation()">📍 Detect My Location</button>
+
+        <label>Upload Photo</label>
+        <input type="file" id="photo" accept="image/*" capture="environment">
+
+        <label>Description</label>
+        <textarea id="description" placeholder="Describe the issue in detail" required></textarea>
+
+        <label>Priority</label>
+        <select id="priority">
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <button type="submit">Submit Report</button>
+      </form>
+
+      <p id="submitMsg" style="margin-top:10px;color:lime;"></p>
+    </section>
+
+    <!-- IMPACT -->
+    <section id="impact" class="screen">
+      <h2>Our Impact</h2>
+      <div class="cards">
+        <div class="card">🌳 120+ Trees Planted</div>
+        <div class="card">🗑️ 45 Dustbins Installed</div>
+        <div class="card">🧹 50 Areas Cleaned</div>
+        <div class="card">👥 300+ Volunteers</div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="screen">
+      <h2>Profile</h2>
+      <form id="profileForm">
+
+        
+        
+        <label>Name</label>
+        <input type="text" id="profileName" required>
+
+        <label>Email</label>
+        <input type="email" id="profileEmail">
+
+        <label>Phone</label>
+        <input type="text" id="profilePhone">
+
+        <label>Location</label>
+        <input type="text" id="profileLocation" required>
+
+        <label>Description / About Me</label>
+        <textarea id="profileDesc" placeholder="Tell us something about yourself"></textarea>
+
+        <button type="submit">Update Profile</button>
+        <button type="button" id="logoutBtn">Logout</button>
+      </form>
+
+      <div id="profileDetails" style="margin-top:15px;"></div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+    <button onclick="showScreen('home')"><i class="fas fa-home"></i><span>Home</span></button>
+    <button onclick="showScreen('campaigns')"><i class="fas fa-leaf"></i><span>Campaigns</span></button>
+    <button onclick="showScreen('report')"><i class="fas fa-bullhorn"></i><span>Report</span></button>
+    <button onclick="showScreen('impact')"><i class="fas fa-chart-bar"></i><span>Impact</span></button>
+    <button onclick="showScreen('profile')"><i class="fas fa-user"></i><span>Profile</span></button>
+  </nav>
+
+ <!-- Footer -->
+<footer class="footer">
+  <p>Contact: 
+    <a href="mailto:dreamerssociety27@gmail.com">dreamerssociety27@gmail.com</a> | 
+    <a href="https://wa.me/923199934457" target="_blank">+92 319 9934457</a>
+  </p>
+  <div class="social">
+    <a href="https://instagram.com/dreamers_society_27" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a> 
+    <a href="https://www.tiktok.com/@dreamers_society_27" target="_blank">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://wa.me/923199934457" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+  <p>&copy; 2025 Dreamers Society | Created by Qasim Usman</p><br><br>
+</footer>
+
+  <!-- JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>
